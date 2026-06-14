@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>新加坡獨自旅行手冊｜一個人也能安心出發</title>
+  <meta name="description" content="新加坡獨旅行前準備、交通、預算、美食、景點、安全應變與旅行紀錄手冊。" />
+  <style>
+    :root {
+      --brand:#ab6540; --bg:#f8f3ea; --text:#262626; --muted:#6b5f55; --card:#ffffff;
+      --line:#eadccd; --shadow:0 12px 30px rgba(70,45,25,.10);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang TC","Microsoft JhengHei",Arial,sans-serif; background:var(--bg); color:var(--text); line-height:1.8; }
+    header { padding:56px 22px 42px; text-align:center; background:linear-gradient(135deg,#7b4429,#ab6540 55%,#c98a5e); color:#fff; }
+    header .eyebrow { letter-spacing:.18em; font-size:13px; opacity:.9; }
+    h1 { margin:8px 0 8px; font-size:clamp(30px,6vw,52px); line-height:1.2; }
+    header p { margin:0 auto; max-width:720px; font-size:17px; opacity:.96; }
+    nav { position:sticky; top:0; z-index:10; background:rgba(248,243,234,.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); padding:10px 12px; overflow-x:auto; white-space:nowrap; }
+    nav a { display:inline-block; margin:0 5px; padding:8px 12px; border:1px solid var(--line); border-radius:999px; background:#fff; color:#3a2c25; text-decoration:none; font-size:14px; }
+    main { max-width:980px; margin:0 auto; padding:26px 18px 70px; }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:22px; padding:24px; margin:20px 0; box-shadow:var(--shadow); }
+    h2 { margin:0 0 14px; font-size:26px; line-height:1.35; border-left:7px solid var(--brand); padding-left:12px; }
+    h3 { margin:22px 0 8px; font-size:20px; color:#3b2b22; }
+    .toc-list { display:grid; gap:10px; }
+    .toc-item { display:flex; gap:10px; align-items:flex-start; justify-content:space-between; padding:12px 14px; border-radius:14px; background:#fffaf2; border:1px solid #f0dfca; }
+    .toc-item a { color:var(--text); text-decoration:none; font-weight:700; }
+    .page { color:var(--muted); font-weight:700; }
+    .tag { display:inline-block; margin-left:6px; padding:2px 8px; border-radius:6px; font-size:.9em; font-weight:800; line-height:1.5; vertical-align:baseline; }
+    .finance { background:#fff26a; color:#111; } .prepare{background:#4ce7e7;color:#111;} .traffic{background:#58f25c;color:#111;} .plan{background:#ff4dff;color:#fff;} .culture{background:#151b8d;color:#fff;} .safe{background:#ffb347;color:#111;} .food{background:#d7b48a;color:#111;} .record{background:#d9c2ff;color:#111;} .tool{background:#b9c6d8;color:#111;} .shopping{background:#ffe9a8;color:#111;}
+    .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+    .mini { background:#fffaf5; border:1px solid #f0dfca; border-radius:16px; padding:15px; }
+    ul, ol { padding-left:1.35em; margin-top:8px; }
+    li { margin:5px 0; }
+    table { width:100%; border-collapse:collapse; background:#fff; border-radius:14px; overflow:hidden; }
+    th, td { border:1px solid #eadccd; padding:10px; text-align:left; vertical-align:top; }
+    th { background:#fff4e8; }
+    .note { background:#fff8dc; border-left:5px solid var(--brand); padding:14px 16px; border-radius:12px; margin:14px 0; }
+    .checklist label { display:block; padding:7px 0; border-bottom:1px dashed #eadccd; }
+    .footer { text-align:center; color:var(--muted); padding:20px; }
+    @media (max-width:720px){ .grid{grid-template-columns:1fr;} .card{padding:20px;} nav{font-size:14px;} th,td{font-size:14px;} }
+  </style>
+</head>
+<body>
+<header>
+  <div class="eyebrow">SINGAPORE SOLO TRAVEL GUIDE</div>
+  <h1>新加坡獨自旅行手冊</h1>
+  <p>一個人出發，也可以把行前準備、交通、美食、景點、安全與花費安排得清楚、有秩序、又有儀式感。</p>
+</header>
+<nav>
+  <a href="#toc">目錄</a><a href="#before">行前準備</a><a href="#money">財務規劃</a><a href="#traffic">交通規劃</a><a href="#itinerary">每日行程</a><a href="#food">飲食安排</a><a href="#culture">文化導覽</a><a href="#safe">安全應變</a><a href="#shopping">伴手禮</a><a href="#record">旅行紀錄</a>
+</nav>
+<main>
+<section id="toc" class="card">
+  <h2>目錄</h2>
+  <h3>活動行前準備須知 1</h3>
+  <div class="toc-list">
+    <div class="toc-item"><a href="#money">新加坡幣哪裡換？<span class="tag finance">財務規劃</span></a><span class="page">2</span></div>
+    <div class="toc-item"><a href="#safe">如何保障獨旅安全及相關應變？<span class="tag safe">安全應變</span></a><span class="page">2</span></div>
+    <div class="toc-item"><a href="#before">行李必備清單 check！＋打包小撇步<span class="tag prepare">行前準備</span></a><span class="page">3</span></div>
+    <div class="toc-item"><a href="#traffic">交通卡／信用卡怎麼用？<span class="tag traffic">交通規劃</span></a><span class="page">3</span></div>
+    <div class="toc-item"><a href="#entry">入境新加坡怎麼準備？<span class="tag prepare">行前準備</span></a><span class="page">3</span></div>
+    <div class="toc-item"><a href="#apps">網路怎麼連？SIM 卡／eSIM 怎麼選？<span class="tag tool">實用工具</span></a><span class="page">3</span></div>
+  </div>
+  <h3>新加坡獨自旅行啟程啦!!!! 4</h3>
+  <div class="toc-list">
+    <div class="toc-item"><a href="#itinerary">玩好新加坡 5 天 4 夜旅遊行程表<span class="tag plan">行程規劃</span></a><span class="page">6</span></div>
+    <div class="toc-item"><a href="#traffic-route">各景點轉換之「交通自己來」！<span class="tag traffic">交通規劃</span></a><span class="page">6</span></div>
+    <div class="toc-item"><a href="#food">每日伙食 DIY：小販中心、咖啡店、超市怎麼吃<span class="tag food">飲食安排</span></a><span class="page">6</span></div>
+    <div class="toc-item"><a href="#culture">新加坡風土民情及各景點簡介<span class="tag culture">文化導覽</span></a><span class="page">5</span></div>
+    <div class="toc-item"><a href="#shopping">推超人氣伴手禮!!!<span class="tag shopping">購物清單</span></a><span class="page">5</span></div>
+    <div class="toc-item"><a href="#english">簡易英文旅遊日常用語<span class="tag culture">語言準備</span></a><span class="page">5</span></div>
+  </div>
+  <h3>期待下一次的旅行!!!! 4</h3>
+  <div class="toc-list">
+    <div class="toc-item"><a href="#budget">旅行花費紀錄及總決算<span class="tag finance">財務規劃</span></a><span class="page">5</span></div>
+    <div class="toc-item"><a href="#record">旅行點滴紀錄：每日心情、景點心得、花費筆記<span class="tag record">旅行紀錄</span></a><span class="page">5</span></div>
+    <div class="toc-item"><a href="#next-trip">下次再訪新加坡清單：想吃、想買、想補拍的地方<span class="tag record">旅行紀錄</span></a><span class="page">5</span></div>
+  </div>
+</section>
+
+<section id="before" class="card">
+  <h2>活動行前準備須知 <span class="tag prepare">行前準備</span></h2>
+  <div class="grid">
+    <div class="mini"><h3>證件與文件</h3><ul><li>護照效期確認。</li><li>機票、住宿訂房確認信。</li><li>旅遊保險資料。</li><li>重要文件雲端備份＋手機截圖。</li></ul></div>
+    <div class="mini checklist"><h3>行李必備清單 check！</h3><label><input type="checkbox"> 護照／錢包／信用卡</label><label><input type="checkbox"> 轉接頭／行動電源／充電線</label><label><input type="checkbox"> 輕便外套／雨具／防曬</label><label><input type="checkbox"> 常備藥／OK繃／濕紙巾</label><label><input type="checkbox"> 旅行小包／環保袋</label></div>
+  </div>
+  <div id="entry" class="note"><strong>入境提醒：</strong>出發前確認入境規定、電子入境卡、住宿地址與回程機票資料。資料請以官方網站最新公告為準。</div>
+</section>
+
+<section id="money" class="card">
+  <h2>新加坡幣哪裡換？ <span class="tag finance">財務規劃</span></h2>
+  <ul><li>出發前先換少量現金，抵達後主要以信用卡、交通卡或行動支付處理。</li><li>小販中心、傳統店家可能需要現金，建議保留小額鈔票。</li><li>每日設定預算：交通、餐食、門票、購物分開記。</li></ul>
+  <table id="budget"><tr><th>項目</th><th>預估金額</th><th>實際金額</th><th>備註</th></tr><tr><td>機票</td><td></td><td></td><td></td></tr><tr><td>住宿</td><td></td><td></td><td></td></tr><tr><td>交通</td><td></td><td></td><td></td></tr><tr><td>餐食</td><td></td><td></td><td></td></tr><tr><td>門票</td><td></td><td></td><td></td></tr><tr><td>伴手禮</td><td></td><td></td><td></td></tr></table>
+</section>
+
+<section id="traffic" class="card">
+  <h2>交通卡／信用卡怎麼用？ <span class="tag traffic">交通規劃</span></h2>
+  <ul><li>市區移動優先使用 MRT 與公車，路線清楚、治安穩定。</li><li>可準備交通卡或使用支援感應的信用卡。</li><li>深夜、下雨、行李多時可改用 Grab。</li></ul>
+  <div id="traffic-route" class="note"><strong>交通自己來：</strong>每一天出門前先把「飯店 → 第一個景點 → 午餐 → 下午景點 → 晚餐 → 飯店」存在 Google Maps。</div>
+</section>
+
+<section id="apps" class="card">
+  <h2>網路與實用 APP <span class="tag tool">實用工具</span></h2>
+  <div class="grid"><div class="mini"><h3>網路選項</h3><ul><li>eSIM：不用換卡，適合短天數。</li><li>實體 SIM：適合不支援 eSIM 的手機。</li><li>漫遊：最簡單，但通常費用較高。</li></ul></div><div class="mini"><h3>建議 APP</h3><ul><li>Google Maps：交通與景點收藏。</li><li>Grab：叫車與外送。</li><li>Google Translate：翻譯。</li><li>Trip.com／Klook：票券與行程。</li></ul></div></div>
+</section>
+
+<section id="itinerary" class="card">
+  <h2>玩好新加坡 5 天 4 夜旅遊行程表 <span class="tag plan">行程規劃</span></h2>
+  <table><tr><th>天數</th><th>主題</th><th>建議行程</th><th>備註</th></tr><tr><td>Day 1</td><td>抵達與熟悉環境</td><td>抵達機場 → 飯店放行李 → 牛車水／克拉碼頭 → 早點休息</td><td>第一天不要排太滿</td></tr><tr><td>Day 2</td><td>經典地標</td><td>魚尾獅公園 → 濱海灣金沙 → Gardens by the Bay → 夜景</td><td>適合拍照</td></tr><tr><td>Day 3</td><td>文化街區</td><td>小印度 → 甘榜格南 → 哈芝巷 → 烏節路</td><td>注意防曬與補水</td></tr><tr><td>Day 4</td><td>放鬆探索</td><td>聖淘沙／環球影城／博物館擇一 → 晚餐</td><td>依體力調整</td></tr><tr><td>Day 5</td><td>收尾與返程</td><td>早餐 → 伴手禮 → 樟宜機場 Jewel → 回程</td><td>預留機場時間</td></tr></table>
+</section>
+
+<section id="food" class="card">
+  <h2>每日伙食 DIY <span class="tag food">飲食安排</span></h2>
+  <ul><li>早餐：咖啡店、吐司、飯店附近簡單吃。</li><li>午餐：小販中心，價格較友善，也能體驗在地生活。</li><li>晚餐：安排一餐景觀餐廳或特色餐廳，讓旅行有記憶點。</li><li>素食提醒：可先查 vegetarian、vegan、no onion no garlic 等關鍵字。</li></ul>
+</section>
+
+<section id="culture" class="card">
+  <h2>新加坡風土民情及景點簡介 <span class="tag culture">文化導覽</span></h2>
+  <div class="grid"><div class="mini"><h3>文化提醒</h3><ul><li>多元族群社會，華人、馬來、印度文化交會。</li><li>公共秩序重視規範，垃圾、飲食、交通禮儀需注意。</li><li>室內冷氣較強，可帶薄外套。</li></ul></div><div class="mini"><h3>景點分類</h3><ul><li>地標：魚尾獅、金沙、濱海灣。</li><li>自然：濱海灣花園、植物園。</li><li>文化：牛車水、小印度、甘榜格南。</li><li>購物：烏節路、Jewel。</li></ul></div></div>
+</section>
+
+<section id="english" class="card">
+  <h2>簡易英文旅遊日常用語 <span class="tag culture">語言準備</span></h2>
+  <table><tr><th>情境</th><th>可以這樣說</th></tr><tr><td>問路</td><td>How can I get to this place?</td></tr><tr><td>點餐</td><td>Could I have this one, please?</td></tr><tr><td>素食需求</td><td>Do you have vegetarian food?</td></tr><tr><td>叫車</td><td>Can you drop me off here?</td></tr><tr><td>求助</td><td>I need some help. Could you help me?</td></tr></table>
+</section>
+
+<section id="safe" class="card">
+  <h2>一個人也能玩得安心!!!! <span class="tag safe">安全應變</span></h2>
+  <ul><li>住宿選交通方便、評論穩定、夜間回飯店路線明確的地方。</li><li>晚上避免走人少巷弄，必要時使用 Grab。</li><li>每天出門前告知親友大致行程，手機保持電量。</li><li>護照、現金、信用卡不要全部放同一處。</li></ul>
+  <div class="note"><strong>突發狀況處理：</strong>迷路先進便利商店、商場或 MRT 站；身體不適先停下來補水休息；重要物品遺失立即聯絡飯店、店家、警局或信用卡公司。</div>
+</section>
+
+<section id="shopping" class="card">
+  <h2>推超人氣伴手禮!!! <span class="tag shopping">購物清單</span></h2>
+  <ul><li>肉骨茶包、咖椰醬、TWG 茶、Bacha Coffee、特色餅乾。</li><li>樟宜機場 Jewel 可安排最後採買。</li><li>買之前先確認行李重量與入境台灣可攜帶規定。</li></ul>
+</section>
+
+<section id="record" class="card">
+  <h2>旅行點滴紀錄 <span class="tag record">旅行紀錄</span></h2>
+  <table><tr><th>日期</th><th>今天去了哪裡</th><th>最喜歡的瞬間</th><th>花費</th></tr><tr><td>Day 1</td><td></td><td></td><td></td></tr><tr><td>Day 2</td><td></td><td></td><td></td></tr><tr><td>Day 3</td><td></td><td></td><td></td></tr><tr><td>Day 4</td><td></td><td></td><td></td></tr><tr><td>Day 5</td><td></td><td></td><td></td></tr></table>
+  <h3 id="next-trip">下次再訪新加坡清單</h3>
+  <ul><li>想吃：</li><li>想買：</li><li>想補拍：</li><li>想慢慢走的地方：</li></ul>
+</section>
+</main>
+<div class="footer">© 新加坡獨自旅行手冊｜Made for solo travel</div>
+</body>
+</html>
