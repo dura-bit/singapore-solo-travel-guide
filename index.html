@@ -175,6 +175,92 @@
       align-items:start;
     }
     .overview-grid .card { margin:0; }
+
+    .summary-cards {
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:14px;
+      margin:0 0 18px;
+    }
+    .summary-card {
+      display:block;
+      padding:16px 15px;
+      border-radius:20px;
+      background:rgba(255,255,255,.94);
+      border:1px solid var(--line);
+      box-shadow:0 10px 24px rgba(70,45,25,.08);
+      text-decoration:none;
+      color:var(--text);
+      transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+    }
+    .summary-card:hover {
+      transform:translateY(-2px);
+      box-shadow:0 14px 28px rgba(70,45,25,.12);
+      border-color:#dfc4ad;
+    }
+    .summary-icon {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:36px;
+      height:36px;
+      border-radius:14px;
+      background:var(--brand-soft);
+      margin-bottom:10px;
+      font-size:20px;
+    }
+    .summary-card strong {
+      display:block;
+      font-size:17px;
+      color:#3b2b22;
+      margin-bottom:4px;
+    }
+    .summary-card span {
+      display:block;
+      color:var(--muted);
+      font-size:13px;
+      font-weight:750;
+      line-height:1.55;
+    }
+
+    .action-btn {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:7px;
+      min-height:42px;
+      padding:9px 15px;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:950;
+      font-size:14px;
+      line-height:1.35;
+      cursor:pointer;
+      border:1px solid transparent;
+      transition:transform .16s ease, background .16s ease, box-shadow .16s ease, border-color .16s ease;
+      -webkit-tap-highlight-color:transparent;
+    }
+    .action-btn:hover { transform:translateY(-1px); }
+    .action-btn:active { transform:translateY(1px); }
+    .action-primary {
+      background:linear-gradient(135deg,var(--brand),var(--brand-dark));
+      color:#fff;
+      box-shadow:0 8px 18px rgba(123,68,41,.24);
+    }
+    .action-secondary {
+      background:#f4eee7;
+      color:#4a4039;
+      border-color:#ded0c3;
+      box-shadow:0 6px 16px rgba(85,78,70,.10);
+    }
+    .action-secondary:hover { background:#ebe3da; border-color:#d2c3b6; }
+    .action-ghost {
+      background:#fff;
+      color:#6b3b24;
+      border-color:#d7b48a;
+      box-shadow:none;
+    }
+
     .toc-group {
       margin:12px 0;
       border-radius:18px;
@@ -272,26 +358,12 @@
     }
     .notion-box p { margin:0 0 10px; color:var(--muted); font-weight:700; }
     .notion-btn {
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:7px;
-      min-height:44px;
-      padding:10px 16px;
-      border-radius:999px;
-      background:#6f6a64;
-      color:#fff;
-      text-decoration:none;
-      font-weight:900;
-      font-size:14px;
-      box-shadow:0 8px 20px rgba(85,78,70,.16);
-      transition:transform .16s ease, background .16s ease, box-shadow .16s ease;
+      background:#f4eee7;
+      color:#4a4039;
+      border-color:#ded0c3;
+      box-shadow:0 6px 16px rgba(85,78,70,.10);
     }
-    .notion-btn:hover {
-      background:#5f5a54;
-      transform:translateY(-1px);
-      box-shadow:0 10px 22px rgba(85,78,70,.20);
-    }
+    .notion-btn:hover { background:#ebe3da; border-color:#d2c3b6; }
     .notion-grid {
       display:grid;
       grid-template-columns:repeat(2,minmax(0,1fr));
@@ -346,23 +418,14 @@
       font-size:14px;
     }
     .currency-btn {
-      display:flex;
       flex-direction:column;
-      align-items:center;
-      justify-content:center;
       gap:2px;
       width:100%;
-      min-height:54px;
+      min-height:56px;
       padding:13px 18px;
       border-radius:16px;
-      background:linear-gradient(135deg,#ab6540,#7b4429);
-      color:#fff;
-      text-decoration:none;
-      font-weight:950;
       font-size:17px;
       letter-spacing:.02em;
-      box-shadow:0 8px 18px rgba(123,68,41,.28);
-      border:0;
       text-align:center;
     }
     .currency-btn span {
@@ -394,17 +457,7 @@
       font-size:14px;
       font-weight:700;
     }
-    .clear-budget-btn {
-      flex:0 0 auto;
-      min-height:38px;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid #d7b48a;
-      background:#fff;
-      color:#6b3b24;
-      font-weight:900;
-      cursor:pointer;
-    }
+    .clear-budget-btn { flex:0 0 auto; }
     .budget-table { min-width:760px; }
     .money-input,.note-input {
       width:100%;
@@ -473,6 +526,8 @@
 
     .mission-details { margin:18px 0; }
     .mission-details .mission-content { padding:12px; }
+    .next-trip-details { margin:18px 0 0; }
+    .next-trip-details .next-trip-content { padding:12px; }
     .mission-intro {
       margin:0 0 12px;
       color:var(--muted);
@@ -511,16 +566,7 @@
       display:flex;
       justify-content:flex-end;
     }
-    .clear-mission-btn {
-      min-height:38px;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid #d7b48a;
-      background:#fff;
-      color:#6b3b24;
-      font-weight:900;
-      cursor:pointer;
-    }
+    .clear-mission-btn { min-height:38px; }
 
     .map-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; margin-top:12px; }
     .map-list a {
@@ -550,7 +596,7 @@
       font-weight:900;
     }
     @media (max-width:820px){
-      .grid,.grid-3,.map-list,.notion-grid,.next-trip-grid,.overview-grid { grid-template-columns:1fr; }
+      .grid,.grid-3,.map-list,.notion-grid,.next-trip-grid,.overview-grid,.summary-cards { grid-template-columns:1fr; }
       .notion-side { position:static; }
       header { padding:48px 18px 34px; }
       main { padding:18px 12px 70px; }
@@ -571,7 +617,7 @@
       h3 { font-size:18px; }
       .mini { padding:13px; }
       .toc-item { font-size:15px; }
-      .btn,.link-btn,.notion-btn { width:100%; }
+      .btn,.link-btn,.notion-btn,.action-btn { width:100%; }
       .top-btn { width:42px; height:42px; }
     }
     @media print {
@@ -614,6 +660,28 @@
 </nav>
 
 <main>
+<section class="summary-cards" aria-label="首頁快速摘要">
+  <a class="summary-card" href="#itinerary">
+    <span class="summary-icon">🗓️</span>
+    <strong>5 天 4 夜</strong>
+    <span>先看每日主題與路線，掌握整趟旅行節奏。</span>
+  </a>
+  <a class="summary-card" href="#safe">
+    <span class="summary-icon">🛡️</span>
+    <strong>獨旅安全</strong>
+    <span>夜歸、迷路、身體不適與物品遺失的應變提醒。</span>
+  </a>
+  <a class="summary-card" href="#food">
+    <span class="summary-icon">🥬</span>
+    <strong>素食友善</strong>
+    <span>整理 vegetarian、vegan 與 no onion no garlic 的點餐方向。</span>
+  </a>
+  <a class="summary-card" href="#traffic">
+    <span class="summary-icon">🚇</span>
+    <strong>交通攻略</strong>
+    <span>MRT、Grab、交通卡、Google Map 一次集中查看。</span>
+  </a>
+</section>
 <div class="overview-grid">
   <section id="toc" class="card">
     <h2>目錄</h2>
@@ -673,7 +741,7 @@
 
 <section id="before" class="card">
   <h2>活動行前準備須知 <span class="tag prepare">行前準備</span></h2>
-  <div class="notion-box"><p>詳細打包清單、文件確認與行前待辦放在 Notion。</p><a class="notion-btn" href="https://app.notion.com/p/37f1af50929a800b8ef8d0d49aa8b21c?source=copy_link" target="_blank" rel="noopener">↗ 打開 Notion｜行前準備清單</a></div>
+  <div class="notion-box"><p>詳細打包清單、文件確認與行前待辦放在 Notion。</p><a class="action-btn action-secondary notion-btn" href="https://app.notion.com/p/37f1af50929a800b8ef8d0d49aa8b21c?source=copy_link" target="_blank" rel="noopener">↗ 打開 Notion｜行前準備清單</a></div>
   <div class="grid">
     <div class="mini"><h3>證件與文件</h3><ul><li>護照效期確認。</li><li>機票、住宿訂房確認信。</li><li>旅遊保險資料。</li><li>重要文件雲端備份＋手機截圖。</li></ul></div>
     <div class="mini checklist"><h3>行李必備清單 check！</h3><label><input type="checkbox"> 護照／錢包／信用卡</label><label><input type="checkbox"> 轉接頭／行動電源／充電線</label><label><input type="checkbox"> 輕便外套／雨具／防曬</label><label><input type="checkbox"> 常備藥／OK 繃／濕紙巾</label><label><input type="checkbox"> 旅行小包／環保袋</label></div>
@@ -683,18 +751,18 @@
 
 <section id="money" class="card">
   <h2>新加坡幣哪裡換？ <span class="tag finance">財務規劃</span></h2>
-  <div class="notion-box"><p>更完整的花費預算、伴手禮與採買紀錄放在 Notion。</p><a class="notion-btn" href="https://app.notion.com/p/37f1af50929a808caa2cc85923c62b03?source=copy_link" target="_blank" rel="noopener">↗ 打開 Notion｜花費預算與伴手禮</a></div>
+  <div class="notion-box"><p>更完整的花費預算、伴手禮與採買紀錄放在 Notion。</p><a class="action-btn action-secondary notion-btn" href="https://app.notion.com/p/37f1af50929a808caa2cc85923c62b03?source=copy_link" target="_blank" rel="noopener">↗ 打開 Notion｜花費預算與伴手禮</a></div>
   <ul><li>出發前先換少量現金，抵達後主要以信用卡、交通卡或行動支付處理。</li><li>小販中心、傳統店家可能需要現金，建議保留小額鈔票。</li><li>每日設定預算：交通、餐食、門票、購物分開記。</li></ul>
   <div class="currency-box">
     <p>想快速估算新加坡幣約等於多少台幣，可以直接點下方按鈕開啟換算頁。</p>
-    <a class="currency-btn" href="https://zt.coinmill.com/SGD_TWD.html#TWD=10000" target="_blank" rel="noopener">
+    <a class="action-btn action-primary currency-btn" href="https://zt.coinmill.com/SGD_TWD.html#TWD=10000" target="_blank" rel="noopener">
       💱 立即換算 SGD／TWD 匯率
       <span>點我開啟匯率換算工具</span>
     </a>
   </div>
   <div class="budget-toolbar" aria-label="旅行花費工具說明">
     <p>下方金額可以直接輸入，會自動加總，並暫存在你目前使用的手機／瀏覽器中。</p>
-    <button type="button" class="clear-budget-btn" id="clearBudgetBtn">清空金額</button>
+    <button type="button" class="action-btn action-ghost clear-budget-btn" id="clearBudgetBtn">清空金額</button>
   </div>
   <div class="table-wrap budget-wrap" id="budget">
     <table class="budget-table">
@@ -719,7 +787,7 @@
 
 <section id="traffic" class="card">
   <h2>交通卡／信用卡怎麼用？ <span class="tag traffic">交通規劃</span></h2>
-  <div class="notion-box"><p>詳細路線、地圖收藏與每日交通安排放在 Notion。</p><a class="notion-btn" href="https://app.notion.com/p/37f1af50929a80c08da6d07c0e5c0561?source=copy_link" target="_blank" rel="noopener">↗ 打開 Notion｜交通與地圖</a></div>
+  <div class="notion-box"><p>詳細路線、地圖收藏與每日交通安排放在 Notion。</p><a class="action-btn action-secondary notion-btn" href="https://app.notion.com/p/37f1af50929a80c08da6d07c0e5c0561?source=copy_link" target="_blank" rel="noopener">↗ 打開 Notion｜交通與地圖</a></div>
   <p class="lead">把交通放在網站裡最實用：人在路上只要打開手機，就能快速看 MRT、Grab、交通卡與機場進市區方式。</p>
   <div class="image-card">
     <img src="singapore-transport-guide.png" alt="新加坡交通工具全攻略：從機場到市區、MRT、公車、計程車、Grab、EZ-Link 與數位工具說明" loading="lazy">
@@ -753,13 +821,13 @@
 
 <section id="itinerary" class="card">
   <h2>玩好新加坡 5 天 4 夜旅遊行程表 <span class="tag plan">行程規劃</span></h2>
-  <div class="notion-box"><p>更完整的每日行程、時間安排與景點備註放在 Notion。</p><a class="notion-btn" href="https://app.notion.com/p/_-2a0443783e9d803594e7dce96be1f9a6?source=copy_link" target="_blank" rel="noopener">↗ 打開 Notion｜五天四夜每日行程</a></div>
+  <div class="notion-box"><p>更完整的每日行程、時間安排與景點備註放在 Notion。</p><a class="action-btn action-secondary notion-btn" href="https://app.notion.com/p/_-2a0443783e9d803594e7dce96be1f9a6?source=copy_link" target="_blank" rel="noopener">↗ 打開 Notion｜五天四夜每日行程</a></div>
   <div class="table-wrap"><table><tr><th>天數</th><th>主題</th><th>建議行程</th><th>備註</th></tr><tr><td>Day 1</td><td>抵達與熟悉環境</td><td>抵達機場 → 飯店放行李 → 牛車水／克拉碼頭 → 早點休息</td><td>第一天不要排太滿</td></tr><tr><td>Day 2</td><td>經典地標</td><td>魚尾獅公園 → 濱海灣金沙 → Gardens by the Bay → 夜景</td><td>適合拍照</td></tr><tr><td>Day 3</td><td>文化街區</td><td>小印度 → 甘榜格南 → 哈芝巷 → 烏節路</td><td>注意防曬與補水</td></tr><tr><td>Day 4</td><td>放鬆探索</td><td>聖淘沙／環球影城／博物館擇一 → 晚餐</td><td>依體力調整</td></tr><tr><td>Day 5</td><td>收尾與返程</td><td>早餐 → 伴手禮 → 樟宜機場 Jewel → 回程</td><td>預留機場時間</td></tr></table></div>
 </section>
 
 <section id="food" class="card">
   <h2>每日伙食 DIY <span class="tag food">飲食安排</span></h2>
-  <div class="notion-box"><p>素食友善餐廳、點餐備註與想吃清單放在 Notion。</p><a class="notion-btn" href="https://app.notion.com/p/37f1af50929a80899ed5def346525dbd?source=copy_link" target="_blank" rel="noopener">↗ 打開 Notion｜素食友善飲食清單</a></div>
+  <div class="notion-box"><p>素食友善餐廳、點餐備註與想吃清單放在 Notion。</p><a class="action-btn action-secondary notion-btn" href="https://app.notion.com/p/37f1af50929a80899ed5def346525dbd?source=copy_link" target="_blank" rel="noopener">↗ 打開 Notion｜素食友善飲食清單</a></div>
   <ul><li>早餐：咖啡店、吐司、飯店附近簡單吃。</li><li>午餐：小販中心，價格較友善，也能體驗在地生活。</li><li>晚餐：安排一餐景觀餐廳或特色餐廳，讓旅行有記憶點。</li><li>素食提醒：可先查 vegetarian、vegan、no onion no garlic 等關鍵字。</li></ul>
 </section>
 
@@ -781,13 +849,13 @@
 
 <section id="shopping" class="card">
   <h2>推超人氣伴手禮!!! <span class="tag shopping">購物清單</span></h2>
-  <div class="notion-box"><p>伴手禮預算、購買地點與採買紀錄和花費表放在同一個 Notion。</p><a class="notion-btn" href="https://app.notion.com/p/37f1af50929a808caa2cc85923c62b03?source=copy_link" target="_blank" rel="noopener">↗ 打開 Notion｜花費預算與伴手禮</a></div>
+  <div class="notion-box"><p>伴手禮預算、購買地點與採買紀錄和花費表放在同一個 Notion。</p><a class="action-btn action-secondary notion-btn" href="https://app.notion.com/p/37f1af50929a808caa2cc85923c62b03?source=copy_link" target="_blank" rel="noopener">↗ 打開 Notion｜花費預算與伴手禮</a></div>
   <ul><li>肉骨茶包、咖椰醬、TWG 茶、Bacha Coffee、特色餅乾。</li><li>樟宜機場 Jewel 可安排最後採買。</li><li>買之前先確認行李重量與入境台灣可攜帶規定。</li></ul>
 </section>
 
 <section id="record" class="card">
   <h2>旅行點滴紀錄 <span class="tag record">旅行紀錄</span></h2>
-  <div class="notion-box"><p>每日心得、照片整理與旅行回顧放在 Notion；這裡保留一份可直接在手機輸入的「下次再訪清單」。</p><a class="notion-btn" href="https://app.notion.com/p/37f1af50929a803b9efcfc2a7d9181b9?source=copy_link" target="_blank" rel="noopener">↗ 打開 Notion｜旅行紀錄與心得</a></div>
+  <div class="notion-box"><p>每日心得、照片整理與旅行回顧放在 Notion；這裡保留一份可直接在手機輸入的「下次再訪清單」。</p><a class="action-btn action-secondary notion-btn" href="https://app.notion.com/p/37f1af50929a803b9efcfc2a7d9181b9?source=copy_link" target="_blank" rel="noopener">↗ 打開 Notion｜旅行紀錄與心得</a></div>
 
 
   <details id="solo-missions" class="toc-group mission-details">
@@ -830,18 +898,22 @@
         <label class="mission-check"><input type="checkbox" data-mission-key="day5-ending"><span>拍一張回程前的照片，當作這趟旅行的結尾</span></label>
       </div>
 
-      <div class="mission-reset"><button type="button" class="clear-mission-btn" id="clearMissionBtn">清空旅行小任務</button></div>
+      <div class="mission-reset"><button type="button" class="action-btn action-ghost clear-mission-btn" id="clearMissionBtn">清空旅行小任務</button></div>
     </div>
   </details>
 
-  <h3 id="next-trip">下次再訪新加坡清單</h3>
-  <p class="lead">可以直接輸入內容，會暫存在同一台手機／同一個瀏覽器裡。</p>
-  <div class="next-trip-grid" id="nextTripList">
-    <div class="next-trip-item"><label for="nextEat">想吃</label><textarea id="nextEat" class="memo-input" data-memo-key="next-eat" placeholder="例如：想再找幾間素食友善餐廳、甜點、咖啡店……"></textarea></div>
-    <div class="next-trip-item"><label for="nextBuy">想買</label><textarea id="nextBuy" class="memo-input" data-memo-key="next-buy" placeholder="例如：咖椰醬、茶包、超市零食、紀念品……"></textarea></div>
-    <div class="next-trip-item"><label for="nextPhoto">想補拍</label><textarea id="nextPhoto" class="memo-input" data-memo-key="next-photo" placeholder="例如：夜景、街景、飯店附近、Jewel、濱海灣……"></textarea></div>
-    <div class="next-trip-item"><label for="nextWalk">想慢慢走的地方</label><textarea id="nextWalk" class="memo-input" data-memo-key="next-walk" placeholder="例如：哈芝巷、小印度、牛車水、濱海灣、植物園……"></textarea></div>
-  </div>
+  <details id="next-trip" class="toc-group next-trip-details">
+    <summary>下次再訪新加坡清單 <span class="tag record">旅行紀錄</span></summary>
+    <div class="next-trip-content">
+      <p class="lead">可以直接輸入內容，會暫存在同一台手機／同一個瀏覽器裡。</p>
+      <div class="next-trip-grid" id="nextTripList">
+        <div class="next-trip-item"><label for="nextEat">想吃</label><textarea id="nextEat" class="memo-input" data-memo-key="next-eat" placeholder="例如：想再找幾間素食友善餐廳、甜點、咖啡店……"></textarea></div>
+        <div class="next-trip-item"><label for="nextBuy">想買</label><textarea id="nextBuy" class="memo-input" data-memo-key="next-buy" placeholder="例如：咖椰醬、茶包、超市零食、紀念品……"></textarea></div>
+        <div class="next-trip-item"><label for="nextPhoto">想補拍</label><textarea id="nextPhoto" class="memo-input" data-memo-key="next-photo" placeholder="例如：夜景、街景、飯店附近、Jewel、濱海灣……"></textarea></div>
+        <div class="next-trip-item"><label for="nextWalk">想慢慢走的地方</label><textarea id="nextWalk" class="memo-input" data-memo-key="next-walk" placeholder="例如：哈芝巷、小印度、牛車水、濱海灣、植物園……"></textarea></div>
+      </div>
+    </div>
+  </details>
 </section>
 </main>
 
