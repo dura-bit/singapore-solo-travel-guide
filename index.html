@@ -167,6 +167,52 @@
     h3 { margin:22px 0 8px; font-size:20px; color:#3b2b22; }
     p { margin:8px 0; }
     .lead { color:var(--muted); margin-bottom:12px; }
+
+    .overview-grid {
+      display:grid;
+      grid-template-columns:minmax(0, 1.35fr) minmax(300px, .85fr);
+      gap:18px;
+      align-items:start;
+    }
+    .overview-grid .card { margin:0; }
+    .toc-group {
+      margin:12px 0;
+      border-radius:18px;
+      border:1px solid #f0dfca;
+      background:#fffaf5;
+      overflow:hidden;
+    }
+    .toc-group summary {
+      list-style:none;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:13px 14px;
+      cursor:pointer;
+      color:#3b2b22;
+      font-size:19px;
+      font-weight:950;
+      line-height:1.35;
+      background:linear-gradient(135deg,#fff7ee,#fff1df);
+    }
+    .toc-group summary::-webkit-details-marker { display:none; }
+    .toc-group summary::after {
+      content:"⌄";
+      flex:0 0 auto;
+      font-size:18px;
+      color:var(--brand);
+      transition:transform .18s ease;
+    }
+    .toc-group[open] summary::after { transform:rotate(180deg); }
+    .toc-group .toc-list { padding:12px; }
+    .toc-group.notion-details,
+    .toc-group.map-details { margin-top:0; }
+    .toc-group.notion-details .notion-content { padding:12px; }
+    .toc-group.notion-details .lead { margin:0 0 12px; }
+    .toc-group.map-details .map-list { padding:12px; margin-top:0; }
+
+    .notion-side { position:sticky; top:76px; }
     .toc-list { display:grid; gap:10px; }
     .toc-item {
       display:flex;
@@ -424,6 +470,58 @@
     }
     .memo-input::placeholder { color:#a39183; font-weight:600; }
 
+
+    .mission-details { margin:18px 0; }
+    .mission-details .mission-content { padding:12px; }
+    .mission-intro {
+      margin:0 0 12px;
+      color:var(--muted);
+      font-weight:700;
+    }
+    .mission-day {
+      background:#fffaf5;
+      border:1px solid #f0dfca;
+      border-radius:18px;
+      padding:14px;
+      margin:12px 0;
+    }
+    .mission-day h3 {
+      margin:0 0 8px;
+      font-size:18px;
+    }
+    .mission-check {
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:9px 0;
+      border-bottom:1px dashed #eadccd;
+      font-weight:750;
+    }
+    .mission-check:last-child { border-bottom:0; }
+    .mission-check input { flex:0 0 auto; margin-top:5px; }
+    .mission-check span { transition:opacity .18s ease, text-decoration-color .18s ease; }
+    .mission-check input:checked + span {
+      opacity:.54;
+      text-decoration:line-through;
+      text-decoration-thickness:2px;
+      text-decoration-color:rgba(171,101,64,.45);
+    }
+    .mission-reset {
+      margin-top:12px;
+      display:flex;
+      justify-content:flex-end;
+    }
+    .clear-mission-btn {
+      min-height:38px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid #d7b48a;
+      background:#fff;
+      color:#6b3b24;
+      font-weight:900;
+      cursor:pointer;
+    }
+
     .map-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; margin-top:12px; }
     .map-list a {
       padding:12px 14px;
@@ -452,7 +550,8 @@
       font-weight:900;
     }
     @media (max-width:820px){
-      .grid,.grid-3,.map-list,.notion-grid,.next-trip-grid { grid-template-columns:1fr; }
+      .grid,.grid-3,.map-list,.notion-grid,.next-trip-grid,.overview-grid { grid-template-columns:1fr; }
+      .notion-side { position:static; }
       header { padding:48px 18px 34px; }
       main { padding:18px 12px 70px; }
       .card { padding:18px; border-radius:20px; margin:14px 0; }
@@ -508,54 +607,69 @@
       <a href="#safe">安全應變</a>
       <a href="#shopping">伴手禮</a>
       <a href="#record">旅行紀錄</a>
+      <a href="#solo-missions">旅行小任務</a>
       <a href="#notion-links">Notion 詳細頁</a>
     </div>
   </details>
 </nav>
 
 <main>
-<section id="toc" class="card">
-  <h2>目錄</h2>
-  <h3>活動行前準備須知 1</h3>
-  <div class="toc-list">
-    <div class="toc-item"><a href="#money">新加坡幣哪裡換？<span class="tag finance">財務規劃</span></a><span class="page">2</span></div>
-    <div class="toc-item"><a href="#safe">如何保障獨旅安全及相關應變？<span class="tag safe">安全應變</span></a><span class="page">2</span></div>
-    <div class="toc-item"><a href="#before">行李必備清單 check！＋打包小撇步<span class="tag prepare">行前準備</span></a><span class="page">3</span></div>
-    <div class="toc-item"><a href="#traffic">交通卡／信用卡怎麼用？<span class="tag traffic">交通規劃</span></a><span class="page">3</span></div>
-    <div class="toc-item"><a href="#entry">入境新加坡怎麼準備？<span class="tag prepare">行前準備</span></a><span class="page">3</span></div>
-    <div class="toc-item"><a href="#apps">網路怎麼連？SIM 卡／eSIM 怎麼選？<span class="tag tool">實用工具</span></a><span class="page">3</span></div>
-  </div>
+<div class="overview-grid">
+  <section id="toc" class="card">
+    <h2>目錄</h2>
 
-  <h3>新加坡獨自旅行啟程啦!!!! 4</h3>
-  <div class="toc-list">
-    <div class="toc-item"><a href="#itinerary">玩好新加坡 5 天 4 夜旅遊行程表<span class="tag plan">行程規劃</span></a><span class="page">6</span></div>
-    <div class="toc-item"><a href="#traffic-route">各景點轉換之「交通自己來」！<span class="tag traffic">交通規劃</span></a><span class="page">6</span></div>
-    <div class="toc-item"><a href="#food">每日伙食 DIY：小販中心、咖啡店、超市怎麼吃<span class="tag food">飲食安排</span></a><span class="page">6</span></div>
-    <div class="toc-item"><a href="#culture">新加坡風土民情及各景點簡介<span class="tag culture">文化導覽</span></a><span class="page">5</span></div>
-    <div class="toc-item"><a href="#shopping">推超人氣伴手禮!!!<span class="tag shopping">購物清單</span></a><span class="page">5</span></div>
-    <div class="toc-item"><a href="#english">簡易英文旅遊日常用語<span class="tag culture">語言準備</span></a><span class="page">5</span></div>
-  </div>
+    <details class="toc-group">
+      <summary>活動行前準備須知</summary>
+      <div class="toc-list">
+        <div class="toc-item"><a href="#money">新加坡幣哪裡換？<span class="tag finance">財務規劃</span></a><span class="page">2</span></div>
+        <div class="toc-item"><a href="#safe">如何保障獨旅安全及相關應變？<span class="tag safe">安全應變</span></a><span class="page">2</span></div>
+        <div class="toc-item"><a href="#before">行李必備清單 check！＋打包小撇步<span class="tag prepare">行前準備</span></a><span class="page">3</span></div>
+        <div class="toc-item"><a href="#traffic">交通卡／信用卡怎麼用？<span class="tag traffic">交通規劃</span></a><span class="page">3</span></div>
+        <div class="toc-item"><a href="#entry">入境新加坡怎麼準備？<span class="tag prepare">行前準備</span></a><span class="page">3</span></div>
+        <div class="toc-item"><a href="#apps">網路怎麼連？SIM 卡／eSIM 怎麼選？<span class="tag tool">實用工具</span></a><span class="page">3</span></div>
+      </div>
+    </details>
 
-  <h3>期待下一次的旅行!!!! 4</h3>
-  <div class="toc-list">
-    <div class="toc-item"><a href="#budget">旅行花費紀錄及總決算<span class="tag finance">財務規劃</span></a><span class="page">5</span></div>
-    <div class="toc-item"><a href="#record">旅行點滴紀錄：每日心情、景點心得、花費筆記<span class="tag record">旅行紀錄</span></a><span class="page">5</span></div>
-    <div class="toc-item"><a href="#next-trip">下次再訪新加坡清單：想吃、想買、想補拍的地方<span class="tag record">旅行紀錄</span></a><span class="page">5</span></div>
-  </div>
-</section>
+    <details class="toc-group">
+      <summary>新加坡獨自旅行啟程啦!!!!</summary>
+      <div class="toc-list">
+        <div class="toc-item"><a href="#itinerary">玩好新加坡 5 天 4 夜旅遊行程表<span class="tag plan">行程規劃</span></a><span class="page">6</span></div>
+        <div class="toc-item"><a href="#traffic-route">各景點轉換之「交通自己來」！<span class="tag traffic">交通規劃</span></a><span class="page">6</span></div>
+        <div class="toc-item"><a href="#food">每日伙食 DIY：小販中心、咖啡店、超市怎麼吃<span class="tag food">飲食安排</span></a><span class="page">6</span></div>
+        <div class="toc-item"><a href="#culture">新加坡風土民情及各景點簡介<span class="tag culture">文化導覽</span></a><span class="page">5</span></div>
+        <div class="toc-item"><a href="#shopping">推超人氣伴手禮!!!<span class="tag shopping">購物清單</span></a><span class="page">5</span></div>
+        <div class="toc-item"><a href="#english">簡易英文旅遊日常用語<span class="tag culture">語言準備</span></a><span class="page">5</span></div>
+      </div>
+    </details>
 
-<section id="notion-links" class="card">
-  <h2>Notion 詳細頁面</h2>
-  <p class="lead">想看更詳細的清單、行程、地圖、飲食、花費與旅行紀錄，可以從這裡開啟各個 Notion 頁面。</p>
-  <div class="notion-grid">
-    <a class="notion-card" href="https://app.notion.com/p/37f1af50929a800b8ef8d0d49aa8b21c?source=copy_link" target="_blank" rel="noopener">行前準備清單<span>打包、文件、入境與出發前確認</span></a>
-    <a class="notion-card" href="https://app.notion.com/p/_-2a0443783e9d803594e7dce96be1f9a6?source=copy_link" target="_blank" rel="noopener">五天四夜每日行程<span>每日路線、景點與備註</span></a>
-    <a class="notion-card" href="https://app.notion.com/p/37f1af50929a80c08da6d07c0e5c0561?source=copy_link" target="_blank" rel="noopener">交通與地圖<span>MRT、Grab、Google Map 與景點位置</span></a>
-    <a class="notion-card" href="https://app.notion.com/p/37f1af50929a80899ed5def346525dbd?source=copy_link" target="_blank" rel="noopener">素食友善飲食清單<span>餐廳、小販中心與點餐備註</span></a>
-    <a class="notion-card" href="https://app.notion.com/p/37f1af50929a808caa2cc85923c62b03?source=copy_link" target="_blank" rel="noopener">花費預算與伴手禮<span>預算、購物清單與採買紀錄</span></a>
-    <a class="notion-card" href="https://app.notion.com/p/37f1af50929a803b9efcfc2a7d9181b9?source=copy_link" target="_blank" rel="noopener">旅行紀錄與心得<span>每日心情、照片與下次再訪清單</span></a>
-  </div>
-</section>
+    <details class="toc-group">
+      <summary>期待下一次的旅行!!!!</summary>
+      <div class="toc-list">
+        <div class="toc-item"><a href="#budget">旅行花費紀錄及總決算<span class="tag finance">財務規劃</span></a><span class="page">5</span></div>
+        <div class="toc-item"><a href="#record">旅行點滴紀錄：每日心情、景點心得、花費筆記<span class="tag record">旅行紀錄</span></a><span class="page">5</span></div>
+        <div class="toc-item"><a href="#solo-missions">一個人的旅行小任務<span class="tag record">旅行紀錄</span></a><span class="page">5</span></div>
+        <div class="toc-item"><a href="#next-trip">下次再訪新加坡清單：想吃、想買、想補拍的地方<span class="tag record">旅行紀錄</span></a><span class="page">5</span></div>
+      </div>
+    </details>
+  </section>
+
+  <section id="notion-links" class="card notion-side">
+    <details class="toc-group notion-details">
+      <summary>Notion 詳細頁面</summary>
+      <div class="notion-content">
+        <p class="lead">想看更詳細的清單、行程、地圖、飲食、花費與旅行紀錄，可以從這裡開啟各個 Notion 頁面。</p>
+        <div class="notion-grid">
+          <a class="notion-card" href="https://app.notion.com/p/37f1af50929a800b8ef8d0d49aa8b21c?source=copy_link" target="_blank" rel="noopener">行前準備清單<span>打包、文件、入境與出發前確認</span></a>
+          <a class="notion-card" href="https://app.notion.com/p/_-2a0443783e9d803594e7dce96be1f9a6?source=copy_link" target="_blank" rel="noopener">五天四夜每日行程<span>每日路線、景點與備註</span></a>
+          <a class="notion-card" href="https://app.notion.com/p/37f1af50929a80c08da6d07c0e5c0561?source=copy_link" target="_blank" rel="noopener">交通與地圖<span>MRT、Grab、Google Map 與景點位置</span></a>
+          <a class="notion-card" href="https://app.notion.com/p/37f1af50929a80899ed5def346525dbd?source=copy_link" target="_blank" rel="noopener">素食友善飲食清單<span>餐廳、小販中心與點餐備註</span></a>
+          <a class="notion-card" href="https://app.notion.com/p/37f1af50929a808caa2cc85923c62b03?source=copy_link" target="_blank" rel="noopener">花費預算與伴手禮<span>預算、購物清單與採買紀錄</span></a>
+          <a class="notion-card" href="https://app.notion.com/p/37f1af50929a803b9efcfc2a7d9181b9?source=copy_link" target="_blank" rel="noopener">旅行紀錄與心得<span>每日心情、照片與下次再訪清單</span></a>
+        </div>
+      </div>
+    </details>
+  </section>
+</div>
 
 <section id="before" class="card">
   <h2>活動行前準備須知 <span class="tag prepare">行前準備</span></h2>
@@ -617,17 +731,19 @@
     <div class="mini"><h3>交通卡／信用卡</h3><p>可使用 EZ-Link 或支援感應的信用卡。出發前確認信用卡可海外感應支付。</p></div>
   </div>
   <div id="traffic-route" class="note"><strong>交通自己來：</strong>每天出門前先把「飯店 → 第一個景點 → 午餐 → 下午景點 → 晚餐 → 飯店」存在 Google Maps。</div>
-  <h3>常用景點 Google Map 快速搜尋</h3>
-  <div class="map-list">
-    <a href="https://www.google.com/maps/search/?api=1&query=Merlion+Park+Singapore" target="_blank" rel="noopener">魚尾獅公園</a>
-    <a href="https://www.google.com/maps/search/?api=1&query=Gardens+by+the+Bay+Singapore" target="_blank" rel="noopener">濱海灣花園</a>
-    <a href="https://www.google.com/maps/search/?api=1&query=Marina+Bay+Sands+Singapore" target="_blank" rel="noopener">濱海灣金沙</a>
-    <a href="https://www.google.com/maps/search/?api=1&query=Chinatown+Singapore" target="_blank" rel="noopener">牛車水</a>
-    <a href="https://www.google.com/maps/search/?api=1&query=Little+India+Singapore" target="_blank" rel="noopener">小印度</a>
-    <a href="https://www.google.com/maps/search/?api=1&query=Haji+Lane+Singapore" target="_blank" rel="noopener">哈芝巷</a>
-    <a href="https://www.google.com/maps/search/?api=1&query=Sentosa+Singapore" target="_blank" rel="noopener">聖淘沙</a>
-    <a href="https://www.google.com/maps/search/?api=1&query=Jewel+Changi+Airport" target="_blank" rel="noopener">樟宜機場 Jewel</a>
-  </div>
+  <details class="toc-group map-details">
+    <summary>常用景點 Google Map 快速搜尋</summary>
+    <div class="map-list">
+      <a href="https://www.google.com/maps/search/?api=1&query=Merlion+Park+Singapore" target="_blank" rel="noopener">魚尾獅公園</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=Gardens+by+the+Bay+Singapore" target="_blank" rel="noopener">濱海灣花園</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=Marina+Bay+Sands+Singapore" target="_blank" rel="noopener">濱海灣金沙</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=Chinatown+Singapore" target="_blank" rel="noopener">牛車水</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=Little+India+Singapore" target="_blank" rel="noopener">小印度</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=Haji+Lane+Singapore" target="_blank" rel="noopener">哈芝巷</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=Sentosa+Singapore" target="_blank" rel="noopener">聖淘沙</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=Jewel+Changi+Airport" target="_blank" rel="noopener">樟宜機場 Jewel</a>
+    </div>
+  </details>
 </section>
 
 <section id="apps" class="card">
@@ -672,6 +788,51 @@
 <section id="record" class="card">
   <h2>旅行點滴紀錄 <span class="tag record">旅行紀錄</span></h2>
   <div class="notion-box"><p>每日心得、照片整理與旅行回顧放在 Notion；這裡保留一份可直接在手機輸入的「下次再訪清單」。</p><a class="notion-btn" href="https://app.notion.com/p/37f1af50929a803b9efcfc2a7d9181b9?source=copy_link" target="_blank" rel="noopener">↗ 打開 Notion｜旅行紀錄與心得</a></div>
+
+
+  <details id="solo-missions" class="toc-group mission-details">
+    <summary>一個人的旅行小任務 <span class="tag record">旅行紀錄</span></summary>
+    <div class="mission-content">
+      <p class="mission-intro">不是為了把行程塞滿，而是讓這趟旅行留下屬於自己的故事。任務可以直接勾選，會暫存在同一台手機／同一個瀏覽器裡。</p>
+
+      <div class="mission-day">
+        <h3>Day 1｜我真的出發了</h3>
+        <label class="mission-check"><input type="checkbox" data-mission-key="day1-photo"><span>在樟宜機場或第一個景點拍一張「我真的來了」照片</span></label>
+        <label class="mission-check"><input type="checkbox" data-mission-key="day1-expect"><span>找一個地方坐下來，寫下這趟旅行最期待的事</span></label>
+        <label class="mission-check"><input type="checkbox" data-mission-key="day1-alone"><span>完成一次自己問路、點餐或搭車</span></label>
+      </div>
+
+      <div class="mission-day">
+        <h3>Day 2｜城市地標收集</h3>
+        <label class="mission-check"><input type="checkbox" data-mission-key="day2-merlion"><span>在魚尾獅附近拍一張代表新加坡的照片</span></label>
+        <label class="mission-check"><input type="checkbox" data-mission-key="day2-observe"><span>找一個角落觀察 5 分鐘，記錄你看到的新加坡日常</span></label>
+        <label class="mission-check"><input type="checkbox" data-mission-key="day2-night"><span>晚上看夜景時，寫下一句送給未來自己的話</span></label>
+      </div>
+
+      <div class="mission-day">
+        <h3>Day 3｜文化街區散步</h3>
+        <label class="mission-check"><input type="checkbox" data-mission-key="day3-color"><span>在小印度、哈芝巷或甘榜格南選一個最喜歡的顏色</span></label>
+        <label class="mission-check"><input type="checkbox" data-mission-key="day3-life"><span>拍一張不是打卡照，而是「你覺得很有生活感」的照片</span></label>
+        <label class="mission-check"><input type="checkbox" data-mission-key="day3-shop"><span>嘗試一家你原本不會走進去的小店</span></label>
+      </div>
+
+      <div class="mission-day">
+        <h3>Day 4｜放鬆與冒險</h3>
+        <label class="mission-check"><input type="checkbox" data-mission-key="day4-spontaneous"><span>做一件今天臨時決定的小事</span></label>
+        <label class="mission-check"><input type="checkbox" data-mission-key="day4-gift"><span>買一個不是伴手禮，而是送給自己的小紀念品</span></label>
+        <label class="mission-check"><input type="checkbox" data-mission-key="day4-sit"><span>找一個地方安靜坐 10 分鐘，不滑手機</span></label>
+      </div>
+
+      <div class="mission-day">
+        <h3>Day 5｜旅行收尾</h3>
+        <label class="mission-check"><input type="checkbox" data-mission-key="day5-three"><span>寫下這趟旅行最喜歡的三個瞬間</span></label>
+        <label class="mission-check"><input type="checkbox" data-mission-key="day5-next"><span>寫下「下次再來新加坡，我想做什麼」</span></label>
+        <label class="mission-check"><input type="checkbox" data-mission-key="day5-ending"><span>拍一張回程前的照片，當作這趟旅行的結尾</span></label>
+      </div>
+
+      <div class="mission-reset"><button type="button" class="clear-mission-btn" id="clearMissionBtn">清空旅行小任務</button></div>
+    </div>
+  </details>
 
   <h3 id="next-trip">下次再訪新加坡清單</h3>
   <p class="lead">可以直接輸入內容，會暫存在同一台手機／同一個瀏覽器裡。</p>
@@ -762,6 +923,32 @@
         localStorage.setItem(storagePrefix + input.dataset.memoKey, input.value);
       });
     });
+  })();
+
+
+  (function () {
+    const storagePrefix = 'singaporeSoloTravelMission.';
+    const missionInputs = document.querySelectorAll('input[data-mission-key]');
+    const clearBtn = document.getElementById('clearMissionBtn');
+
+    missionInputs.forEach(input => {
+      const savedValue = localStorage.getItem(storagePrefix + input.dataset.missionKey);
+      input.checked = savedValue === 'true';
+      input.addEventListener('change', function () {
+        localStorage.setItem(storagePrefix + input.dataset.missionKey, String(input.checked));
+      });
+    });
+
+    if (clearBtn) {
+      clearBtn.addEventListener('click', function () {
+        const confirmClear = window.confirm('確定要清空旅行小任務的勾選紀錄嗎？');
+        if (!confirmClear) return;
+        missionInputs.forEach(input => {
+          input.checked = false;
+          localStorage.removeItem(storagePrefix + input.dataset.missionKey);
+        });
+      });
+    }
   })();
 
 </script>
