@@ -544,6 +544,31 @@
     .mission-details .mission-content { padding:12px; }
     .next-trip-details { margin:18px 0 0; }
     .next-trip-details .next-trip-content { padding:12px; }
+    .checkin-details { margin:16px 0 0; }
+    .checkin-details .checkin-content { padding:12px; }
+    .checkin-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+    .checkin-card { background:#fffaf5; border:1px solid #f0dfca; border-radius:16px; padding:12px; }
+    .checkin-card h3 { margin:0 0 6px; font-size:17px; }
+    .checkin-card p { margin:0; color:#5f5148; font-weight:750; font-size:15px; line-height:1.65; }
+    .checkin-card-top { display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:6px; }
+    .checkin-card-top h3 { margin:0; }
+    .copy-btn {
+      flex:0 0 auto;
+      min-height:32px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid #d9c8b7;
+      background:#f4eee7;
+      color:#4f463f;
+      font:inherit;
+      font-size:13px;
+      font-weight:900;
+      cursor:pointer;
+      box-shadow:0 3px 8px rgba(70,45,25,.06);
+    }
+    .copy-btn:hover { background:#ece2d8; }
+    .copy-btn.copied { background:#e7f4df; border-color:#b7d8a6; color:#335724; }
+    .checkin-tip { margin:12px 0 0; padding:12px 14px; border-radius:14px; background:#fff8dc; border-left:5px solid var(--brand); color:#5f5148; font-weight:750; }
     .mission-intro {
       margin:0 0 12px;
       color:var(--muted);
@@ -863,6 +888,37 @@
   <h2>一個人也能玩得安心!!!! <span class="tag safe">安全應變</span></h2>
   <ul><li>住宿選交通方便、評論穩定、夜間回飯店路線明確的地方。</li><li>晚上避免走人少巷弄，必要時使用 Grab。</li><li>每天出門前告知親友大致行程，手機保持電量。</li><li>護照、現金、信用卡不要全部放同一處。</li></ul>
   <div class="note"><strong>突發狀況處理：</strong>迷路先進便利商店、商場或 MRT 站；身體不適先停下來補水休息；重要物品遺失立即聯絡飯店、店家、警局或信用卡公司。</div>
+
+  <details class="toc-group checkin-details">
+    <summary>每日平安報備模板 <span class="tag safe">安全應變</span></summary>
+    <div class="checkin-content">
+      <p class="lead">和家人約好固定報備節奏：早上出門前、下午中段、晚上回住宿後。每次一句話就好，安心但不打擾旅行。</p>
+      <div class="checkin-grid">
+        <div class="checkin-card">
+          <div class="checkin-card-top">
+            <h3>早上出門前</h3>
+            <button class="copy-btn" type="button" data-copy-target="checkinMorning">一鍵複製</button>
+          </div>
+          <p id="checkinMorning">早安～我今天預計去：＿＿＿。主要會搭 MRT／Grab 移動，晚上大約＿＿點前回住宿。我目前一切平安。</p>
+        </div>
+        <div class="checkin-card">
+          <div class="checkin-card-top">
+            <h3>下午中段</h3>
+            <button class="copy-btn" type="button" data-copy-target="checkinAfternoon">一鍵複製</button>
+          </div>
+          <p id="checkinAfternoon">我現在在＿＿＿附近，一切平安。等等準備去吃飯／前往下一個景點，手機還有電，不用擔心。</p>
+        </div>
+        <div class="checkin-card">
+          <div class="checkin-card-top">
+            <h3>晚上回住宿後</h3>
+            <button class="copy-btn" type="button" data-copy-target="checkinNight">一鍵複製</button>
+          </div>
+          <p id="checkinNight">我已經安全回到住宿了。今天行程順利，準備休息。明天預計去：＿＿＿。晚安～</p>
+        </div>
+      </div>
+      <div class="checkin-tip"><strong>小約定：</strong>出發前可先和家人說明「如果 1～2 小時沒回，通常是在搭車、拍照或網路不穩；晚上回住宿一定會報平安」。</div>
+    </div>
+  </details>
 </section>
 
 <section id="shopping" class="card">
@@ -1039,6 +1095,47 @@
         });
       });
     }
+  })();
+
+
+  (function () {
+    const copyButtons = document.querySelectorAll('[data-copy-target]');
+
+    function fallbackCopy(text) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.setAttribute('readonly', '');
+      textarea.style.position = 'fixed';
+      textarea.style.left = '-9999px';
+      document.body.appendChild(textarea);
+      textarea.select();
+      try { document.execCommand('copy'); }
+      finally { document.body.removeChild(textarea); }
+    }
+
+    copyButtons.forEach(button => {
+      button.addEventListener('click', async function () {
+        const target = document.getElementById(button.dataset.copyTarget);
+        if (!target) return;
+        const text = target.innerText.trim();
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+          } else {
+            fallbackCopy(text);
+          }
+          const originalText = button.textContent;
+          button.textContent = '已複製';
+          button.classList.add('copied');
+          setTimeout(() => {
+            button.textContent = originalText;
+            button.classList.remove('copied');
+          }, 1600);
+        } catch (error) {
+          window.prompt('請手動複製這段文字：', text);
+        }
+      });
+    });
   })();
 
 </script>
